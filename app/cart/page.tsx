@@ -67,7 +67,7 @@ export default function CartPage() {
               Your bag is currently empty
             </h2>
             <p className="text-sm text-neutral-400 max-w-md mx-auto font-light leading-relaxed">
-              Explore our maiden drop of 280 GSM heavyweight French terry tees engineered for architectural presence.
+              Explore our collection of 280 GSM heavyweight French terry tees engineered for architectural presence.
             </p>
           </div>
 

@@ -151,7 +151,7 @@ export default function AboutPage() {
       <Reveal delay={0.2}>
         <div className="mt-16 p-10 sm:p-16 rounded-3xl bg-gradient-to-r from-neutral-900 via-neutral-900 to-[#171410] border border-neutral-800 text-center space-y-6">
           <span className="text-xs font-mono uppercase tracking-widest text-[#c49a45]">
-            Drop 01 Allocation Active
+            Current Collection
           </span>
           <h3 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
             Experience the Architectural Silhouette.

@@ -11,7 +11,7 @@ export interface LookbookItem {
 export const lookbookItems: LookbookItem[] = [
   {
     id: "look-01",
-    season: "DROP 01 // AUTUMN-WINTER",
+    season: "ZAS COLLECTION // AUTUMN-WINTER",
     title: "Brutalist Monolith in Charcoal",
     location: "Concrete Pavilions, Sector F-8",
     image:
@@ -21,7 +21,7 @@ export const lookbookItems: LookbookItem[] = [
   },
   {
     id: "look-02",
-    season: "DROP 01 // AUTUMN-WINTER",
+    season: "ZAS COLLECTION // AUTUMN-WINTER",
     title: "Raw Edges & Shadowed Silhouettes",
     location: "Industrial Corridor, Old Harbor",
     image:
@@ -31,7 +31,7 @@ export const lookbookItems: LookbookItem[] = [
   },
   {
     id: "look-03",
-    season: "DROP 01 // AUTUMN-WINTER",
+    season: "ZAS COLLECTION // AUTUMN-WINTER",
     title: "Minimalist Atelier Architecture",
     location: "Studio Loft White Space",
     image:
@@ -41,7 +41,7 @@ export const lookbookItems: LookbookItem[] = [
   },
   {
     id: "look-04",
-    season: "DROP 01 // AUTUMN-WINTER",
+    season: "ZAS COLLECTION // AUTUMN-WINTER",
     title: "Mineral Distress & Heavy Cotton Drape",
     location: "Quarry Outpost No. 4",
     image:

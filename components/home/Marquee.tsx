@@ -11,7 +11,7 @@ const marqueeItems = [
   "NATIONWIDE EXPRESS DISPATCH",
   "ZERO COMPROMISE DRAPE",
   "INSTANT WHATSAPP CONCIERGE",
-  "DROP 01 NOW LIVE",
+  "THE CURRENT COLLECTION IS HERE",
 ];
 
 export default function Marquee() {

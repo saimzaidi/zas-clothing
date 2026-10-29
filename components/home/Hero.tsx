@@ -25,7 +25,7 @@ export default function Hero() {
             <Reveal delay={0.1}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-900/90 border border-neutral-700/60 text-neutral-300 text-xs font-mono tracking-widest uppercase shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#c49a45] animate-pulse" />
-                <span>DROP 01 // 280 GSM HEAVYWEIGHT SILHOUETTES</span>
+                <span>COLLECTION // 280 GSM HEAVYWEIGHT SILHOUETTES</span>
               </div>
             </Reveal>
 

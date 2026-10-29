@@ -78,7 +78,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/drop" className="hover:text-white transition-colors">
-                  Limited Drops
+                  The Drop
                 </Link>
               </li>
               <li>

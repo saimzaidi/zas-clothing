@@ -15,7 +15,7 @@ export default function FeaturedGrid() {
         <div>
           <Reveal>
             <span className="text-xs font-mono uppercase tracking-widest text-[#c49a45]">
-              Drop 01 Selection
+              Current Collection
             </span>
           </Reveal>
           <Reveal delay={0.1}>

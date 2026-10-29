@@ -127,7 +127,9 @@ export const useCartStore = create<CartState>()(
       },
 
       getItemCount: () => {
-        return get().items.reduce((total, item) => total + item.quantity, 0);
+        return get()
+          .getPopulatedItems()
+          .reduce((total, item) => total + item.quantity, 0);
       },
 
       getSubtotal: () => {
@@ -139,6 +141,17 @@ export const useCartStore = create<CartState>()(
       name: "zas_cart_storage",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({ items: state.items }),
+      merge: (persistedState, currentState) => {
+        const persistedItems = (persistedState as Partial<CartState> | undefined)
+          ?.items;
+
+        return {
+          ...currentState,
+          items: Array.isArray(persistedItems)
+            ? persistedItems.filter((item) => getProductById(item.productId))
+            : currentState.items,
+        };
+      },
     }
   )
 );

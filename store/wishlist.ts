@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { getProductById } from "@/data/products";
 
 interface WishlistState {
   itemIds: string[];
@@ -28,6 +29,18 @@ export const useWishlistStore = create<WishlistState>()(
     {
       name: "zas_wishlist_storage",
       storage: createJSONStorage(() => localStorage),
+      merge: (persistedState, currentState) => {
+        const persistedItemIds = (
+          persistedState as Partial<WishlistState> | undefined
+        )?.itemIds;
+
+        return {
+          ...currentState,
+          itemIds: Array.isArray(persistedItemIds)
+            ? persistedItemIds.filter((id) => getProductById(id))
+            : currentState.itemIds,
+        };
+      },
     }
   )
 );

@@ -22,7 +22,6 @@ function ShopContent() {
   const initialSize = (searchParams.get("size") as ProductSize) || "all";
   const initialColor = searchParams.get("color") || "";
   const initialTag = searchParams.get("tag") || "";
-  const initialIsDrop = searchParams.get("isDrop") === "true";
   const isWishlistMode = searchParams.get("wishlist") === "true";
 
   const [search, setSearch] = useState(initialSearch);
@@ -51,7 +50,6 @@ function ShopContent() {
     color: initialColor,
     maxPrice: maxCatalogPrice,
     tag: initialTag,
-    isDropOnly: initialIsDrop,
   });
 
   const handleResetFilters = () => {
@@ -61,7 +59,6 @@ function ShopContent() {
       color: "",
       maxPrice: maxCatalogPrice,
       tag: "",
-      isDropOnly: false,
     });
     router.push("/shop");
   };
@@ -99,11 +96,6 @@ function ShopContent() {
 
         // Price filter
         if (product.price > filters.maxPrice) {
-          return false;
-        }
-
-        // Drop only filter
-        if (filters.isDropOnly && !product.isDrop) {
           return false;
         }
 

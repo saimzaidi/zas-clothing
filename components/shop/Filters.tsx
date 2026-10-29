@@ -10,7 +10,6 @@ export interface FilterState {
   color: string;
   maxPrice: number;
   tag: string;
-  isDropOnly: boolean;
 }
 
 interface FiltersProps {
@@ -38,8 +37,7 @@ export default function Filters({
     filters.size !== "all" ||
     filters.color !== "" ||
     filters.maxPrice < maxCatalogPrice ||
-    filters.tag !== "" ||
-    filters.isDropOnly;
+    filters.tag !== "";
 
   return (
     <div className="space-y-6 p-6 rounded-3xl bg-[#111114] border border-neutral-800 text-white">
@@ -61,21 +59,6 @@ export default function Filters({
             Reset
           </button>
         )}
-      </div>
-
-      {/* Limited Drop Toggle */}
-      <div>
-        <label className="flex items-center justify-between cursor-pointer group">
-          <span className="text-xs uppercase tracking-wider font-medium text-neutral-300 group-hover:text-white">
-            Limited Drops Only
-          </span>
-          <input
-            type="checkbox"
-            checked={filters.isDropOnly}
-            onChange={(e) => onChange({ ...filters, isDropOnly: e.target.checked })}
-            className="w-4 h-4 rounded bg-neutral-900 border-neutral-700 text-[#c49a45] focus:ring-0 focus:ring-offset-0 cursor-pointer"
-          />
-        </label>
       </div>
 
       {/* Size Filter */}

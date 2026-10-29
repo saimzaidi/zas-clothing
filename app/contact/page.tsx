@@ -160,7 +160,7 @@ export default function ContactPage() {
                     <option>Size & Fit Recommendation</option>
                     <option>Order Tracking & Dispatch Query</option>
                     <option>7-Day Exchange Request</option>
-                    <option>Styling & Drop 01 Allocation</option>
+                    <option>Styling & Upcoming Releases</option>
                     <option>Other Question</option>
                   </select>
                 </div>

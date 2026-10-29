@@ -1,52 +1,56 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import ProductGrid from "@/components/shop/ProductGrid";
-import { getDropProducts } from "@/data/products";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "The Drop — Limited ZAS Silhouettes",
+  title: "The Drop — Coming Soon",
   description:
-    "Explore the limited ZAS Clothing drop: heavyweight 280 GSM cotton tees with architectural drop-shoulder cuts.",
+    "The next limited ZAS Clothing release is in development. Explore the current collection while you wait.",
 };
 
 export default function DropPage() {
-  const dropProducts = getDropProducts();
-
   return (
-    <main className="pt-28 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="pb-10 sm:pb-14 border-b border-neutral-800">
-        <Reveal>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#c49a45]">
-            Limited Production // Drop 01
-          </span>
-          <h1 className="mt-3 text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
-            The <span className="font-editorial-italic font-normal text-[#e8c373]">Drop.</span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-neutral-400">
-            A focused release of heavyweight silhouettes, engineered in 280 GSM
-            cotton and produced in limited quantities.
-          </p>
-        </Reveal>
+    <main className="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+      <section className="relative isolate overflow-hidden rounded-[2rem] border border-neutral-800 bg-[#111114] px-6 py-16 sm:px-12 sm:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-32 -z-10 h-96 w-96 rounded-full bg-[#c49a45]/10 blur-[120px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-48 -left-24 -z-10 h-96 w-96 rounded-full bg-neutral-700/20 blur-[120px]"
+        />
 
-        <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
-          <span className="text-xs font-mono uppercase tracking-wider text-neutral-500">
-            {dropProducts.length} limited silhouettes
-          </span>
-          <Link
-            href="/shop"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-300 transition-colors hover:text-white"
-          >
-            Browse the full collection
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#c49a45]/30 bg-[#c49a45]/10 px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[#e8c373] sm:text-xs">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Next release in development</span>
+            </div>
+
+            <h1 className="text-4xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
+              The Drop
+              <span className="mt-2 block font-editorial-italic font-normal text-[#e8c373]">
+                is coming soon.
+              </span>
+            </h1>
+
+            <p className="mx-auto mt-6 max-w-xl text-sm font-light leading-relaxed text-neutral-400 sm:text-base">
+              We are shaping the next limited release with the same focus on
+              fabric, fit, and finish. It will be here when it is ready.
+            </p>
+
+            <Link
+              href="/shop"
+              className="mt-9 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-xs font-bold uppercase tracking-widest text-black transition-colors hover:bg-neutral-200"
+            >
+              Shop the current collection
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Reveal>
         </div>
-      </div>
-
-      <div className="pt-8">
-        <ProductGrid products={dropProducts} />
-      </div>
+      </section>
     </main>
   );
 }

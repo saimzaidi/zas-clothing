@@ -13,12 +13,6 @@ export const siteConfig = {
     number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923001234567",
     displayNumber: "+92 300 1234567",
   },
-  drop: {
-    title: "DROP 01 // NOIR ESSENTIALS",
-    subtitle: "Limited Edition Heavyweight 280 GSM Drop Shoulder Tees",
-    // Target date: 4 days from launch for countdown timer
-    targetDate: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
-  },
   socials: {
     instagram: "https://instagram.com/zasclothing",
     tiktok: "https://tiktok.com/@zasclothing",
