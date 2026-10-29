@@ -1,21 +1,10 @@
-import Image from "next/image";
+import { Product } from "@/types/product";
+import ProductArtwork from "./ProductArtwork";
 
 interface GalleryProps {
-  image: string;
-  productName: string;
+  product: Product;
 }
 
-export default function Gallery({ image, productName }: GalleryProps) {
-  return (
-    <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900">
-      <Image
-        src={image}
-        alt={productName}
-        fill
-        priority
-        sizes="(max-width: 768px) 100vw, 50vw"
-        className="object-cover"
-      />
-    </div>
-  );
+export default function Gallery({ product }: GalleryProps) {
+  return <ProductArtwork product={product} />;
 }
