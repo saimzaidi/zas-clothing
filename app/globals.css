@@ -695,6 +695,23 @@
   text-decoration-color: currentColor;
 }
 
+.zas-theme .mobile-menu-overlay {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.zas-theme .mobile-menu-panel {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-top: calc(1.5rem + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+
 @media (max-width: 1023px) {
   .zas-theme .about-page .about-story-photo {
     aspect-ratio: 5 / 4;

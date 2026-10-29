@@ -38,7 +38,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="mobile-menu-overlay fixed inset-0 z-50 md:hidden">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -54,7 +54,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-y-0 left-0 w-[85%] max-w-sm bg-[#111114] border-r border-neutral-800 p-6 flex flex-col justify-between"
+            className="mobile-menu-panel fixed inset-y-0 left-0 w-[85%] max-w-sm bg-[#111114] border-r border-neutral-800 p-6 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-neutral-800">
