@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Heart, ShoppingBag, Check } from "lucide-react";
 import { Product } from "@/types/product";
 import { formatPrice } from "@/lib/format";
@@ -13,27 +12,18 @@ import { useHydrated } from "@/hooks/useHydrated";
 
 interface ProductCardProps {
   product: Product;
-  priority?: boolean;
 }
 
-export default function ProductCard({ product, priority = false }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const isHydrated = useHydrated();
   const addItem = useCartStore((s) => s.addItem);
   const isInWishlist = useWishlistStore((s) => s.isInWishlist(product.id));
   const toggleWishlist = useWishlistStore((s) => s.toggleWishlist);
 
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
 
   const activeColor = product.colors[selectedColorIndex] || product.colors[0];
-
-  // Image logic: display active color image, or hover second image
-  const defaultImage = activeColor?.images?.[0] || product.images[0];
-  const hoverImage =
-    activeColor?.images?.[1] || product.images[1] || defaultImage;
-
-  const currentDisplayImage = isHovered && hoverImage ? hoverImage : defaultImage;
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -63,23 +53,33 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   return (
     <div
       className="group relative flex flex-col rounded-3xl bg-[#131317] border border-neutral-800/80 p-3 sm:p-4 hover:border-neutral-700/80 transition-all duration-300 hover:shadow-xl hover:shadow-black/40"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Image container */}
+      {/* Text-only product panel */}
       <Link
         href={`/product/${product.slug}`}
-        className="relative block aspect-[4/5] w-full rounded-2xl overflow-hidden bg-neutral-900"
+        aria-label={`View ${product.name}`}
+        className="relative block aspect-[4/5] w-full overflow-hidden rounded-2xl border border-neutral-800 bg-[#0d0d0f]"
       >
-        <Image
-          src={currentDisplayImage}
-          alt={product.name}
-          fill
-          priority={priority}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,154,69,0.12),transparent_68%)]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
+        <div className="absolute inset-4 rounded-xl border border-neutral-800/70" aria-hidden="true" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
+          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-neutral-500">
+            ZAS / {product.id.replace("zas-", "")}
+          </span>
+          <span className="mt-5 text-5xl font-black tracking-[0.16em] text-white sm:text-6xl">
+            ZAS
+          </span>
+          <span className="mt-2 max-w-[14rem] text-[10px] font-mono uppercase tracking-[0.2em] text-[#e8c373]">
+            {product.fit || "Heavyweight Drop Shoulder"}
+          </span>
+          <span className="mt-6 h-px w-10 bg-[#c49a45]/70" aria-hidden="true" />
+          <span className="mt-3 text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+            {product.fabric || "280 GSM Cotton"}
+          </span>
+        </div>
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
