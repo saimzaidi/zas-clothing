@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, MessageCircle } from "lucide-react";
@@ -14,7 +15,6 @@ interface MobileMenuProps {
 
 const navLinks = [
   { name: "Shop All", href: "/shop" },
-  { name: "The Drop", href: "/drop" },
   { name: "About Atelier", href: "/about" },
   { name: "Shipping & Policy", href: "/shipping-returns" },
   { name: "FAQ", href: "/faq" },
@@ -61,9 +61,16 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <Link
                   href="/"
                   onClick={onClose}
-                  className="text-xl font-black tracking-widest text-white uppercase"
+                  aria-label="ZAS Clothing home"
+                  className="inline-flex items-center"
                 >
-                  ZAS<span className="text-[#c49a45]">.</span>
+                  <Image
+                    src="/brand/zas-logo.png"
+                    alt="ZAS Clothing — Wear Your Story"
+                    width={86}
+                    height={75}
+                    className="h-16 w-[4.6rem] object-contain"
+                  />
                 </Link>
                 <button
                   onClick={onClose}

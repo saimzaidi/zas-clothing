@@ -7,7 +7,7 @@ import { formatPrice } from "@/lib/format";
 import { useCartStore } from "@/store/cart";
 import { useWishlistStore } from "@/store/wishlist";
 import { useHydrated } from "@/hooks/useHydrated";
-import { ShoppingBag, Heart, MessageCircle, Check, AlertCircle, ShieldCheck, Truck, RefreshCw } from "lucide-react";
+import { ShoppingBag, Heart, MessageCircle, Check, AlertCircle } from "lucide-react";
 import SizeGuide from "./SizeGuide";
 import { siteConfig } from "@/lib/config";
 import { generateWhatsAppCheckoutUrl } from "@/lib/whatsapp";
@@ -53,6 +53,7 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
       color: selectedColor,
       size: selectedSize,
       quantity,
+      selectedImage: product.colors.find((color) => color.name === selectedColor)?.images?.[0] || product.images[0],
     });
 
     if (success) {
@@ -90,18 +91,13 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
       {/* Product Title, Price & Badges */}
       <div>
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          {product.isDrop && (
-            <span className="px-3 py-1 rounded-full bg-[#c49a45] text-black text-[10px] font-mono uppercase tracking-widest font-bold">
-              Drop 01 // Limited
-            </span>
-          )}
-          {product.isNew && !product.isDrop && (
+          {product.isNew && (
             <span className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-mono uppercase tracking-widest font-bold">
               New Arrival
             </span>
           )}
           <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 text-[10px] font-mono uppercase">
-            280 GSM French Terry
+            T-Shirt
           </span>
         </div>
 
@@ -289,21 +285,6 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
         </button>
       </div>
 
-      {/* Value Badges Accordion / Highlights */}
-      <div className="pt-6 border-t border-neutral-800 space-y-3 text-xs text-neutral-400">
-        <div className="flex items-center gap-3">
-          <Truck className="w-4 h-4 text-[#c49a45]" />
-          <span>Nationwide Delivery: 3-5 business days across Pakistan.</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <RefreshCw className="w-4 h-4 text-[#c49a45]" />
-          <span>7-Day Hassle-Free Exchange for sizing and fit.</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <ShieldCheck className="w-4 h-4 text-[#c49a45]" />
-          <span>100% Pre-Shrunk 280 GSM French Terry Cotton.</span>
-        </div>
-      </div>
     </div>
   );
 }

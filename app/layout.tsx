@@ -21,19 +21,21 @@ const fontSerif = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: `${siteConfig.name} — Architectural Drop Shoulder Streetwear`,
-    template: `%s | ${siteConfig.name}`,
-  },
+  title: siteConfig.name,
   description: siteConfig.description,
+  icons: {
+    icon: "/brand/zas-logo-dark.png",
+    shortcut: "/brand/zas-logo-dark.png",
+    apple: "/brand/zas-logo-dark.png",
+  },
   keywords: [
     "ZAS Clothing",
     "drop shoulder t-shirts",
     "heavyweight t-shirts",
-    "streetwear Pakistan",
+    "streetwear Karachi",
     "280 GSM cotton",
     "oversized tee",
-    "Pakistani streetwear",
+    "Karachi streetwear",
   ],
   authors: [{ name: siteConfig.name }],
   metadataBase: new URL(siteConfig.url),
@@ -58,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fontSans.variable} ${fontSerif.variable}`}>
-      <body className="bg-[#0d0d0f] text-neutral-100 font-sans selection:bg-[#c49a45] selection:text-black">
+      <body className="zas-theme bg-[#0d0d0f] text-neutral-100 font-sans selection:bg-[#c49a45] selection:text-black">
         <SmoothScroll>
           <div className="flex flex-col min-h-screen">
             <Header />

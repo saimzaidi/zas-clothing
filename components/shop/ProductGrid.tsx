@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Product } from "@/types/product";
 import ProductCard from "./ProductCard";
 import Reveal from "@/components/motion/Reveal";
@@ -6,19 +7,31 @@ import Reveal from "@/components/motion/Reveal";
 interface ProductGridProps {
   products: Product[];
   onResetFilters?: () => void;
+  isWishlistMode?: boolean;
 }
 
-export default function ProductGrid({ products, onResetFilters }: ProductGridProps) {
+export default function ProductGrid({ products, onResetFilters, isWishlistMode = false }: ProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="text-center py-24 px-4 rounded-3xl bg-neutral-900/40 border border-neutral-800 space-y-4">
         <h3 className="text-lg font-bold uppercase tracking-wider text-white">
-          No matching silhouettes found
+          {isWishlistMode ? "No saved pieces yet" : "No matching silhouettes found"}
         </h3>
         <p className="text-xs sm:text-sm text-neutral-400 max-w-sm mx-auto font-light">
-          Try expanding your price range, clearing size filters, or searching for broader terms.
+          {isWishlistMode
+            ? "Tap the heart on any piece to keep it here."
+            : "Try expanding your price range, clearing size filters, or searching for broader terms."}
         </p>
-        {onResetFilters && (
+        {isWishlistMode ? (
+          <div className="pt-2">
+            <Link
+              href="/shop"
+              className="inline-flex px-6 py-2.5 rounded-full bg-white text-black text-xs font-semibold uppercase tracking-wider hover:bg-neutral-200 transition-colors"
+            >
+              Explore the collection
+            </Link>
+          </div>
+        ) : onResetFilters ? (
           <div className="pt-2">
             <button
               onClick={onResetFilters}
@@ -27,7 +40,7 @@ export default function ProductGrid({ products, onResetFilters }: ProductGridPro
               Clear All Filters
             </button>
           </div>
-        )}
+        ) : null}
       </div>
     );
   }

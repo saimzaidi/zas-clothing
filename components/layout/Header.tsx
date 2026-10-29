@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ShoppingBag, Heart, Menu } from "lucide-react";
 import { useCartStore } from "@/store/cart";
@@ -28,7 +29,6 @@ export default function Header() {
 
   const navItems = [
     { name: "Collection", href: "/shop" },
-    { name: "The Drop", href: "/drop" },
     { name: "About", href: "/about" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
@@ -37,7 +37,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`site-header fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
             ? "bg-[#0d0d0f]/90 backdrop-blur-md border-b border-neutral-800/80 py-3.5 shadow-lg"
             : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5"
@@ -56,14 +56,15 @@ export default function Header() {
           </div>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1.5 group">
-            <span className="text-2xl font-black tracking-widest text-white uppercase transition-transform group-hover:scale-105">
-              ZAS
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#c49a45] mb-1 group-hover:bg-white transition-colors" />
-            <span className="hidden sm:inline-block text-[9px] font-mono tracking-widest uppercase text-neutral-400 pl-2 border-l border-neutral-700">
-              Atelier
-            </span>
+          <Link href="/" aria-label="ZAS Clothing home" className="flex shrink-0 items-center group">
+            <Image
+              src="/brand/zas-logo-dark.png"
+              alt="ZAS Clothing — Wear Your Story"
+              width={114}
+              height={100}
+              priority
+              className="h-14 w-16 object-contain transition-transform group-hover:scale-[1.03] sm:h-[4.5rem] sm:w-[5.25rem]"
+            />
           </Link>
 
           {/* Desktop Navigation */}

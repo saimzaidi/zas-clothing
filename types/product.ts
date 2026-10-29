@@ -18,7 +18,6 @@ export type Product = {
   stock: Record<string, number>; // key: `${colorName}-${size}`
   tags: string[];
   isNew?: boolean;
-  isDrop?: boolean;
   fit?: string;
   fabric?: string;
 };

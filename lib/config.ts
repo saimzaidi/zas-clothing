@@ -15,6 +15,7 @@ export const siteConfig = {
   },
   socials: {
     instagram: "https://instagram.com/zasclothing",
+    facebook: "https://facebook.com/zasclothing",
     tiktok: "https://tiktok.com/@zasclothing",
     whatsapp: "https://wa.me/923001234567",
   },

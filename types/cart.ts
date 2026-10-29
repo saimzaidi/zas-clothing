@@ -5,6 +5,7 @@ export type CartItem = {
   color: string;
   size: string;
   quantity: number;
+  selectedImage?: string;
 };
 
 export type PopulatedCartItem = CartItem & {

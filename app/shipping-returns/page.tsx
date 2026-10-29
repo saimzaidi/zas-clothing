@@ -30,7 +30,7 @@ export default function ShippingReturnsPage() {
 
         <Reveal delay={0.2}>
           <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-            Transparent, customer-centric fulfillment across Pakistan. Every garment is inspected and packed in our signature archival box.
+            Transparent, customer-centric fulfillment from Karachi. Every garment is inspected and packed before dispatch.
           </p>
         </Reveal>
       </div>
@@ -54,7 +54,7 @@ export default function ShippingReturnsPage() {
               </h3>
               <p className="text-2xl font-black text-white font-mono">2–3 Days</p>
               <p className="text-xs text-neutral-400 font-light leading-relaxed">
-                Lahore, Karachi, Islamabad, Rawalpindi, and Faisalabad receive prioritized courier transit with next-day dispatch.
+                Karachi orders receive prioritized courier transit with next-day dispatch.
               </p>
             </div>
 
@@ -156,7 +156,7 @@ export default function ShippingReturnsPage() {
             <div className="p-6 rounded-3xl bg-neutral-900/60 border border-neutral-800 space-y-2">
               <h4 className="text-sm font-bold uppercase text-white font-mono">Cash on Delivery (COD)</h4>
               <p className="text-xs text-neutral-400 leading-relaxed font-light">
-                Pay in cash directly to the courier rider upon package handoff at your doorstep anywhere in Pakistan.
+                Pay in cash directly to the courier rider upon package handoff at your doorstep in Karachi.
               </p>
             </div>
 

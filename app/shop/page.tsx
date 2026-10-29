@@ -65,13 +65,14 @@ function ShopContent() {
 
   // Filter and sort items
   const filteredProducts = useMemo(() => {
+    if (isWishlistMode) {
+      return isHydrated
+        ? products.filter((product) => wishlistIds.includes(product.id))
+        : [];
+    }
+
     return products
       .filter((product) => {
-        // Wishlist mode filter
-        if (isWishlistMode && isHydrated) {
-          if (!wishlistIds.includes(product.id)) return false;
-        }
-
         // Search query
         if (search.trim()) {
           const query = search.toLowerCase();
@@ -157,42 +158,46 @@ function ShopContent() {
       </div>
 
       {/* Control Bar: Search, Mobile Filter Toggle, Sort */}
-      <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="w-full sm:max-w-md">
-          <SearchBar value={search} onChange={setSearch} />
-        </div>
+      {!isWishlistMode && (
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:max-w-md">
+            <SearchBar value={search} onChange={setSearch} />
+          </div>
 
-        <div className="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-3">
-          <button
-            onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-            className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono uppercase tracking-wider text-white"
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#c49a45]" />
-            <span>Filters</span>
-          </button>
+          <div className="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-3">
+            <button
+              onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
+              className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono uppercase tracking-wider text-white"
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#c49a45]" />
+              <span>Filters</span>
+            </button>
 
-          <SortSelect value={sort} onChange={setSort} />
+            <SortSelect value={sort} onChange={setSort} />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Main Content Area */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
         {/* Desktop Sidebar Filters */}
-        <aside className="hidden lg:block lg:col-span-3 sticky top-24">
-          <Filters
-            filters={filters}
-            onChange={setFilters}
-            onReset={handleResetFilters}
-            availableColors={availableColors}
-            availableSizes={availableSizes}
-            minPrice={minPrice}
-            maxCatalogPrice={maxCatalogPrice}
-            totalFiltered={filteredProducts.length}
-          />
-        </aside>
+        {!isWishlistMode && (
+          <aside className="hidden lg:block lg:col-span-3 sticky top-24">
+            <Filters
+              filters={filters}
+              onChange={setFilters}
+              onReset={handleResetFilters}
+              availableColors={availableColors}
+              availableSizes={availableSizes}
+              minPrice={minPrice}
+              maxCatalogPrice={maxCatalogPrice}
+              totalFiltered={filteredProducts.length}
+            />
+          </aside>
+        )}
 
         {/* Mobile Filters Drawer Modal */}
-        {mobileFilterOpen && (
+        {!isWishlistMode && mobileFilterOpen && (
           <div className="lg:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 flex items-center justify-center">
             <div className="w-full max-w-md max-h-[90vh] overflow-y-auto">
               <Filters
@@ -216,10 +221,11 @@ function ShopContent() {
         )}
 
         {/* Product Grid */}
-        <div className="lg:col-span-9">
+        <div className={isWishlistMode ? "lg:col-span-12" : "lg:col-span-9"}>
           <ProductGrid
             products={filteredProducts}
             onResetFilters={handleResetFilters}
+            isWishlistMode={isWishlistMode}
           />
         </div>
       </div>

@@ -7,7 +7,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function Lookbook() {
   return (
-    <section id="lookbook" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="lookbook" className="lookbook-section py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
         <div>
@@ -35,7 +35,7 @@ export default function Lookbook() {
         {/* Large Feature 1 */}
         <div className="md:col-span-8">
           <Reveal delay={0.1}>
-            <div className="group relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
+            <div className="lookbook-photo-card group relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
               <Image
                 src={lookbookItems[0].image}
                 alt={lookbookItems[0].title}
@@ -71,7 +71,7 @@ export default function Lookbook() {
         {/* Tall Feature 2 */}
         <div className="md:col-span-4">
           <Reveal delay={0.2}>
-            <div className="group relative aspect-[3/4] sm:aspect-auto md:h-full min-h-[380px] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
+            <div className="lookbook-photo-card group relative aspect-[3/4] sm:aspect-auto md:h-full min-h-[380px] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
               <Image
                 src={lookbookItems[1].image}
                 alt={lookbookItems[1].title}
@@ -97,7 +97,7 @@ export default function Lookbook() {
         {/* Feature 3 */}
         <div className="md:col-span-4">
           <Reveal delay={0.3}>
-            <div className="group relative aspect-[4/3] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
+            <div className="lookbook-photo-card group relative aspect-[4/3] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
               <Image
                 src={lookbookItems[2].image}
                 alt={lookbookItems[2].title}
@@ -123,7 +123,7 @@ export default function Lookbook() {
         {/* Feature 4 */}
         <div className="md:col-span-8">
           <Reveal delay={0.4}>
-            <div className="group relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
+            <div className="lookbook-photo-card group relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-800">
               <Image
                 src={lookbookItems[3].image}
                 alt={lookbookItems[3].title}

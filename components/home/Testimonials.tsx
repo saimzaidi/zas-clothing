@@ -5,7 +5,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-[#09090b] border-t border-neutral-800/80">
+    <section className="testimonial-section py-20 sm:py-28 bg-[#09090b] border-t border-neutral-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
           <Reveal>
@@ -20,7 +20,7 @@ export default function Testimonials() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-3 text-sm text-neutral-400 font-light">
-              Real feedback from creatives, stylists, and collectors across Pakistan.
+              Real feedback from creatives, stylists, and collectors across Karachi.
             </p>
           </Reveal>
         </div>

@@ -38,7 +38,7 @@ export default function ContactPage() {
 
         <Reveal delay={0.1}>
           <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
-            Connect with <span className="font-editorial-italic font-normal text-[#e8c373]">Atelier.</span>
+            Connect with <span className="font-editorial-italic font-normal text-[#e8c373]">Us.</span>
           </h1>
         </Reveal>
 
@@ -108,7 +108,7 @@ export default function ContactPage() {
                 <MapPin className="w-5 h-5 text-[#c49a45] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-white font-semibold uppercase font-mono">Design Studio & Fulfillment</h4>
-                  <p className="mt-1">Gulberg III, Lahore & Clifton, Karachi, Pakistan</p>
+                  <p className="mt-1">Clifton, Karachi</p>
                 </div>
               </div>
             </div>

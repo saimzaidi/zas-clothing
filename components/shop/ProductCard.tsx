@@ -38,6 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       color: activeColor.name,
       size: targetSize,
       quantity: 1,
+      selectedImage: activeColor?.images?.[0] || product.images[0],
     });
 
     if (success) {
@@ -54,7 +55,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div
-      className="group relative flex flex-col rounded-3xl bg-[#131317] border border-neutral-800/80 p-3 sm:p-4 hover:border-neutral-700/80 transition-all duration-300 hover:shadow-xl hover:shadow-black/40"
+      className="product-card group relative flex flex-col rounded-3xl bg-[#131317] border border-neutral-800/80 p-3 sm:p-4 hover:border-neutral-700/80 transition-all duration-300 hover:shadow-xl hover:shadow-black/40"
     >
       {/* Text-only product panel */}
       <Link
@@ -66,12 +67,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-          {product.isDrop && (
-            <span className="px-2.5 py-0.5 rounded-full bg-[#c49a45] text-black text-[10px] font-bold tracking-wider uppercase font-mono">
-              Drop 01
-            </span>
-          )}
-          {product.isNew && !product.isDrop && (
+          {product.isNew && (
             <span className="px-2.5 py-0.5 rounded-full bg-white text-black text-[10px] font-bold tracking-wider uppercase font-mono">
               New
             </span>
@@ -141,7 +137,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </h3>
 
           <p className="text-xs text-neutral-400 line-clamp-1 mt-0.5">
-            {product.fit || "Heavyweight Drop Shoulder"}
+            {product.fit || "Everyday T-Shirt"}
           </p>
         </div>
 

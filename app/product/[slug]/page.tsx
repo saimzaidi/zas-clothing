@@ -32,7 +32,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${product.name} — Heavyweight Drop Shoulder Tee`,
+    title: `${product.name} — T-Shirt`,
     description: product.description,
     openGraph: {
       title: `${product.name} | ${siteConfig.name}`,

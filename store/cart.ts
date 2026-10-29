@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { CartItem, PopulatedCartItem } from "@/types/cart";
 import { getProductById } from "@/data/products";
+import { ProductSize } from "@/types/product";
 
 interface CartState {
   items: CartItem[];
@@ -9,7 +10,13 @@ interface CartState {
   openDrawer: () => void;
   closeDrawer: () => void;
   toggleDrawer: () => void;
-  addItem: (item: { productId: string; color: string; size: string; quantity?: number }) => boolean;
+  addItem: (item: {
+    productId: string;
+    color: string;
+    size: string;
+    quantity?: number;
+    selectedImage?: string;
+  }) => boolean;
   removeItem: (productId: string, color: string, size: string) => void;
   updateQuantity: (productId: string, color: string, size: string, quantity: number) => boolean;
   clearCart: () => void;
@@ -28,7 +35,7 @@ export const useCartStore = create<CartState>()(
       closeDrawer: () => set({ isDrawerOpen: false }),
       toggleDrawer: () => set((state) => ({ isDrawerOpen: !state.isDrawerOpen })),
 
-      addItem: ({ productId, color, size, quantity = 1 }) => {
+      addItem: ({ productId, color, size, quantity = 1, selectedImage }) => {
         const product = getProductById(productId);
         if (!product) return false;
 
@@ -54,11 +61,12 @@ export const useCartStore = create<CartState>()(
           updated[existingIndex] = {
             ...updated[existingIndex],
             quantity: newQuantity,
+            selectedImage: selectedImage || updated[existingIndex].selectedImage,
           };
           set({ items: updated, isDrawerOpen: true });
         } else {
           set({
-            items: [...currentItems, { productId, color, size, quantity: newQuantity }],
+            items: [...currentItems, { productId, color, size, quantity: newQuantity, selectedImage }],
             isDrawerOpen: true,
           });
         }
@@ -109,7 +117,7 @@ export const useCartStore = create<CartState>()(
           if (product) {
             const colorObj = product.colors.find((c) => c.name === item.color);
             const image =
-              colorObj?.images?.[0] || product.images[0] || "/placeholder-tee.jpg";
+              item.selectedImage || colorObj?.images?.[0] || product.images[0] || "/placeholder-tee.jpg";
             const subtotal = product.price * item.quantity;
             result.push({
               productId: item.productId,
@@ -145,11 +153,42 @@ export const useCartStore = create<CartState>()(
         const persistedItems = (persistedState as Partial<CartState> | undefined)
           ?.items;
 
+        const migratedItems = Array.isArray(persistedItems)
+          ? persistedItems.flatMap((item) => {
+              const product = getProductById(item.productId);
+              if (!product) return [];
+
+              const color =
+                product.colors.find((option) => option.name === item.color) ||
+                product.colors[0];
+              const size = product.sizes.includes(item.size as ProductSize)
+                ? item.size
+                : product.sizes[0];
+              if (!color || !size) return [];
+
+              const stock = product.stock[`${color.name}-${size}`] ?? 0;
+              if (stock <= 0) return [];
+
+              const currentImage = color.images[0] || product.images[0];
+              const selectedImage = product.images.includes(item.selectedImage || "")
+                ? item.selectedImage
+                : currentImage;
+
+              return [
+                {
+                  ...item,
+                  color: color.name,
+                  size,
+                  quantity: Math.min(Math.max(1, item.quantity), stock),
+                  selectedImage,
+                },
+              ];
+            })
+          : currentState.items;
+
         return {
           ...currentState,
-          items: Array.isArray(persistedItems)
-            ? persistedItems.filter((item) => getProductById(item.productId))
-            : currentState.items,
+          items: migratedItems,
         };
       },
     }

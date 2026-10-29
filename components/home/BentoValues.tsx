@@ -7,7 +7,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function BentoValues() {
   return (
-    <section className="py-20 sm:py-28 bg-[#09090b] border-y border-neutral-800/80">
+    <section className="values-section py-20 sm:py-28 bg-[#09090b] border-y border-neutral-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
@@ -33,7 +33,7 @@ export default function BentoValues() {
           {/* Card 1: 280 GSM French Terry Architecture (Span 7) */}
           <div className="md:col-span-7">
             <Reveal delay={0.1} className="h-full">
-              <div className="h-full relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
+              <div className="values-card-lime h-full relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
                 <div className="relative z-10 space-y-4 max-w-lg">
                   <div className="w-12 h-12 rounded-2xl bg-[#c49a45]/20 flex items-center justify-center text-[#c49a45]">
                     <Layers className="w-6 h-6" />
@@ -61,7 +61,7 @@ export default function BentoValues() {
           {/* Card 2: Engineered Drop Shoulder Pattern (Span 5) */}
           <div className="md:col-span-5">
             <Reveal delay={0.2} className="h-full">
-              <div className="h-full relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
+              <div className="values-card-sky h-full relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-white">
                     <Scissors className="w-6 h-6" />
@@ -86,7 +86,7 @@ export default function BentoValues() {
           {/* Card 3: Indestructible Rib Collar (Span 5) */}
           <div className="md:col-span-5">
             <Reveal delay={0.3} className="h-full">
-              <div className="h-full relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
+              <div className="values-card-lilac h-full relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-neutral-700 transition-colors">
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-[#c49a45]">
                     <Sparkles className="w-6 h-6" />
@@ -111,7 +111,7 @@ export default function BentoValues() {
           {/* Card 4: WhatsApp Concierge Experience (Span 7) */}
           <div className="md:col-span-7">
             <Reveal delay={0.4} className="h-full">
-              <div className="h-full relative overflow-hidden rounded-3xl bg-gradient-to-br from-neutral-900/90 to-[#101912] border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-emerald-500/40 transition-colors">
+              <div className="values-card-lime h-full relative overflow-hidden rounded-3xl bg-gradient-to-br from-neutral-900/90 to-[#101912] border border-neutral-800 p-8 sm:p-10 flex flex-col justify-between group hover:border-emerald-500/40 transition-colors">
                 <div className="space-y-4 max-w-lg">
                   <div className="w-12 h-12 rounded-2xl bg-[#25D366]/20 flex items-center justify-center text-[#25D366]">
                     <MessageCircle className="w-6 h-6" />

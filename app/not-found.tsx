@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export const dynamic = "force-static";
+
 export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 text-center">
@@ -13,7 +15,7 @@ export default function NotFound() {
           Silhouette Not Found
         </h1>
         <p className="text-sm text-neutral-400 leading-relaxed font-light">
-          The garment or page you are searching for does not exist or has been archived from this collection drop.
+          The page or product you are looking for is not available.
         </p>
         <div className="pt-2">
           <Link

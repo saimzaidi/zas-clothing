@@ -16,7 +16,7 @@ const marqueeItems = [
 
 export default function Marquee() {
   return (
-    <section className="relative py-4 bg-neutral-900 border-y border-neutral-800 overflow-hidden">
+    <section className="editorial-marquee relative py-4 bg-neutral-900 border-y border-neutral-800 overflow-hidden">
       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0d0d0f] to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0d0d0f] to-transparent z-10 pointer-events-none" />
 
