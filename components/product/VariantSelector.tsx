@@ -21,6 +21,7 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
   const addItem = useCartStore((s) => s.addItem);
   const isInWishlist = useWishlistStore((s) => s.isInWishlist(product.id));
   const toggleWishlist = useWishlistStore((s) => s.toggleWishlist);
+  const isWishlisted = isHydrated && isInWishlist;
 
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || "");
   const [selectedSize, setSelectedSize] = useState<ProductSize>(product.sizes[0] || "M");
@@ -266,13 +267,14 @@ export default function VariantSelector({ product }: VariantSelectorProps) {
             type="button"
             onClick={() => toggleWishlist(product.id)}
             className={`p-4 rounded-full border transition-all ${
-              isHydrated && isInWishlist
+              isWishlisted
                 ? "bg-[#c49a45] border-[#c49a45] text-black"
                 : "border-neutral-800 bg-neutral-900 text-neutral-300 hover:text-white hover:border-neutral-700"
             }`}
-            aria-label="Toggle wishlist"
+            aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+            aria-pressed={isWishlisted}
           >
-            <Heart className={`w-5 h-5 ${isHydrated && isInWishlist ? "fill-current" : ""}`} />
+            <Heart className={`w-5 h-5 ${isWishlisted ? "fill-current" : ""}`} />
           </button>
         </div>
 

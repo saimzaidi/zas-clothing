@@ -19,6 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((s) => s.addItem);
   const isInWishlist = useWishlistStore((s) => s.isInWishlist(product.id));
   const toggleWishlist = useWishlistStore((s) => s.toggleWishlist);
+  const isWishlisted = isHydrated && isInWishlist;
 
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [justAdded, setJustAdded] = useState(false);
@@ -99,14 +100,15 @@ export default function ProductCard({ product }: ProductCardProps) {
         <button
           onClick={handleWishlistToggle}
           className={`absolute top-3 right-3 z-10 p-2 rounded-full backdrop-blur-md transition-all ${
-            isHydrated && isInWishlist
+            isWishlisted
               ? "bg-[#c49a45] text-black"
               : "bg-black/40 text-neutral-300 hover:text-white hover:bg-black/70"
           }`}
-          aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+          aria-pressed={isWishlisted}
         >
           <Heart
-            className={`w-4 h-4 ${isHydrated && isInWishlist ? "fill-current" : ""}`}
+            className={`w-4 h-4 ${isWishlisted ? "fill-current" : ""}`}
           />
         </button>
 
