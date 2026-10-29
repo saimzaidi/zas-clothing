@@ -5,4 +5,5 @@
 - DONE: Build shop page and filters (ProductGrid, Filters, SortSelect, SearchBar)
 - DONE: Build product detail page (Gallery, VariantSelector, SizeGuide, RelatedProducts)
 - DONE: Build cart page, drawer checkout form and WhatsApp order integration
-- NEXT: Build brand information pages (About, Contact, Shipping & Returns, FAQ)
+- DONE: Build brand information pages (About, Contact, Shipping & Returns, FAQ)
+- NEXT: Production build verification, type-checking, and performance audit
