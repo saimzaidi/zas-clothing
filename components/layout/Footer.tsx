@@ -77,7 +77,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/shop?isDrop=true" className="hover:text-white transition-colors">
+                <Link href="/drop" className="hover:text-white transition-colors">
                   Limited Drops
                 </Link>
               </li>

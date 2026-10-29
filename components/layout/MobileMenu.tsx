@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/config";
@@ -13,7 +14,7 @@ interface MobileMenuProps {
 
 const navLinks = [
   { name: "Shop All", href: "/shop" },
-  { name: "The Drop", href: "/shop?tag=Limited+Drop" },
+  { name: "The Drop", href: "/drop" },
   { name: "About Atelier", href: "/about" },
   { name: "Shipping & Policy", href: "/shipping-returns" },
   { name: "FAQ", href: "/faq" },
@@ -21,6 +22,8 @@ const navLinks = [
 ];
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const pathname = usePathname();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -77,7 +80,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     key={link.name}
                     href={link.href}
                     onClick={onClose}
-                    className="flex items-center justify-between py-2 text-lg font-medium text-neutral-200 hover:text-white transition-colors group"
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={`flex items-center justify-between py-2 text-lg font-medium transition-colors group ${
+                      pathname === link.href
+                        ? "text-[#e8c373]"
+                        : "text-neutral-200 hover:text-white"
+                    }`}
                   >
                     <span>{link.name}</span>
                     <ArrowRight className="w-4 h-4 text-neutral-600 group-hover:text-white group-hover:translate-x-1 transition-all" />

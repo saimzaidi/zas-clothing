@@ -28,7 +28,7 @@ export default function Header() {
 
   const navItems = [
     { name: "Collection", href: "/shop" },
-    { name: "The Drop", href: "/shop?isDrop=true" },
+    { name: "The Drop", href: "/drop" },
     { name: "About", href: "/about" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
@@ -74,6 +74,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={`text-xs uppercase tracking-widest font-medium transition-colors hover:text-white ${
                     isActive ? "text-white font-semibold" : "text-neutral-400"
                   }`}

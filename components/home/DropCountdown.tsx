@@ -102,7 +102,7 @@ export default function DropCountdown() {
         <Reveal delay={0.4}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/shop?isDrop=true"
+              href="/drop"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all shadow-xl active:scale-[0.98]"
             >
               <span>Claim Drop Silhouette</span>
