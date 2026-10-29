@@ -108,7 +108,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Gallery */}
         <div className="lg:col-span-7 sticky top-24">
-          <Gallery images={product.images} productName={product.name} />
+          <Gallery image={product.images[0]} productName={product.name} />
         </div>
 
         {/* Product Details & Variant Selector */}
